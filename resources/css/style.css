@@ -1,0 +1,17 @@
+html {
+  padding: 10px;
+}
+
+body {
+  background-color: black;
+  color: whitesmoke;
+  margin: auto;
+  max-width: 800px;
+  text-align: center;
+  width: 100%;
+}
+
+h1 {
+  margin: 0;
+  cursor: pointer;
+}
