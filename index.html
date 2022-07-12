@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Validatorinator</title>
+    <title>Virtual Pet</title>
     <link rel="shortcut icon" type="image/ico" href="./resources/images/letter-v.ico">
     <link rel="shortcut icon" sizes="196x196" href="./resources/images/touch-icon/android-icon.png">
     <link rel="stylesheet" href="./resources/css/modern-normalize.css">
@@ -12,13 +12,25 @@
 
   <body>
     <header>
+      <div class="stat" id="name"></div>
+      <div class="stat" id="age"></div>
+      <div class="stat" id="health"></div>
+      <div class="stat" id="hunger"></div>
+      <div class="stat" id="happiness"></div>
+      <div id="copyright"></div>
     </header>
 
     <main>
-      <section>
+      <section id="pet-commands">
+        <h2 class="hidden">Pet Commands</h2>
+        <button id="clean" type="submit">Clean</button>
+        <button id="feed" type="submit">Feed</button>
+        <button id="play" type="submit">Play</button>
       </section>
 
-      <section>
+      <section id="pet-image">
+        <h2 class="hidden">Pet Image</h2>
+        <img src="">
       </section>
     </main>
 
