@@ -76,12 +76,18 @@ section {
   justify-content: center;
 }
 
-@media (min-width: 400px) {
+@media (min-width: 800px) {
   body {
-    grid-template-areas: "header main"
+    grid-template-areas: "header main copyright" "header main copyright"
   }
 
   header {
-    grid-template-areas: "name";
+    grid-template-areas: "name name" "age" "stat";
+    margin-right: 20px;
+  }
+
+  main {
+    grid-area: main;
+    margin: 0;
   }
 }
