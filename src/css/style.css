@@ -38,6 +38,11 @@ main {
 
 section {
   background-color: brown;
+  text-align: center;
+}
+
+footer {
+  text-align: center;
 }
 
 .stat {
