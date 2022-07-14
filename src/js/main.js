@@ -8,7 +8,7 @@ class Pet {
   }
 
   clean () {
-    if (this.health < 100) {
+    if (this.health < 100 && (this.health + 5 < 100)) {
       this.health += 5;
     }
 
@@ -16,7 +16,7 @@ class Pet {
   }
 
   feed () {
-    if (this.hunger > 0) {
+    if (this.hunger > 0 && (this.hunger - 5 > 0)) {
       this.hunger -= 5;
     }
 
@@ -24,7 +24,7 @@ class Pet {
   }
 
   play () {
-    if (this.happiness < 100) {
+    if (this.happiness < 100 && (this.happiness + 5 < 100)) {
       this.happiness += 5;
     }
 
@@ -60,6 +60,10 @@ class Pet {
     this.stats();
   }
 
+  isAlive () {
+    return this.health > 0;
+  }
+
   stats () {
     document.querySelector('#name').textContent = this.describeName();
     document.querySelector('#age').textContent = this.describeAge();
@@ -83,29 +87,38 @@ window.onload = function () {
 };
 
 function clickClean () {
-  currentPet.clean();
+  if (currentPet.isAlive()) {
+    currentPet.clean();
+    changeFace();
+  }
 }
 
 function clickFeed () {
-  currentPet.feed();
+  if (currentPet.isAlive()) {
+    currentPet.feed();
+  }
 }
 
 function clickPlay () {
-  currentPet.play();
+  if (currentPet.isAlive()) {
+    currentPet.play();
+  }
 }
 
 function copyright () {
   const copyrightElement = document.querySelector('#copyright');
   const date = new Date();
   const currentYear = date.getFullYear();
-  copyrightElement.innerHTML = `&copy;${currentYear} Jason D. (eyedarts)`;
+  copyrightElement.innerHTML = `&copy;${currentYear} Jason D. (@eyedarts)`;
 }
 
 function timer () {
   let time = 0
   let timer = setInterval(function () {
-    time += 1;
-    changesForEachDay();
+    if (currentPet.isAlive()) {
+      time += 1;
+      changesForEachDay();
+    }
   }, 1000);
 }
 
@@ -114,4 +127,20 @@ function changesForEachDay () {
   currentPet.decrementHappiness();
   currentPet.incrementHunger();
   currentPet.decrementHealth();
+
+  changeFace();
+}
+
+function changeFace () {
+  const faceImage = document.querySelector('#pet-image img');
+
+  if (!currentPet.isAlive()) {
+    faceImage.src = './src/images/dead.svg';
+  } else if (currentPet.health < 35) {
+    faceImage.src = './src/images/sick.svg';
+  } else if (currentPet.health < 65) {
+    faceImage.src = './src/images/sad.svg';
+  } else {
+    faceImage.src = './src/images/happy.svg';
+  }
 }
